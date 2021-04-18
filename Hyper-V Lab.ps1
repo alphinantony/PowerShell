@@ -2,7 +2,7 @@
 <#
 .SYNOPSIS
     create Hyper-V VMs based on the input from user.
-.DESCRIPTIO
+.DESCRIPTION
     Long description
 .EXAMPLE
     PS C:\> <example usage>
