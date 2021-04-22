@@ -37,7 +37,6 @@ else {
         try {
             $NoOfVMs = Read-Host "Enter the no. of VMs to create"   # Getting the no. of VMs to be created via user prompt
             $cond = $true   # a flag variable
-            # $NoOfVMs2= $NoOfVMs
             if (($cond) -and ($NoOfVMs -gt 0)) {
                 while ($NoOfVMs -gt 0) {
                     $tempName = Read-Host "Enter the name for VM(s)" # Getting the names of VMs to be created via user prompt
@@ -94,7 +93,6 @@ else {
     # }
     
 }
-
 
 # function VirtualSwitch ($VirSwitch = (Get-VMSwitch -SwitchType External -ErrorAction SilentlyContinue)) {
 #     if ($VirSwitch) {
