@@ -24,7 +24,7 @@ if (!(Get-Module -Name Hyper-V)) {
 else {
     
     [int]$NoOfVMs = $null       # Getting the no. of VM to create
-    $NameOfVMs = $null       
+    # $NameOfVMs = $null       
     $NameOfVMs = @()            # Getting the names of VM to create
     $VMlocation = "H:\Hyper-V VMs"  # The location to VM files
     $VHDXsize = 20GB                # vDisk Size
@@ -37,6 +37,7 @@ else {
         try {
             $NoOfVMs = Read-Host "Enter the no. of VMs to create"   # Getting the no. of VMs to be created via user prompt
             $cond = $true   # a flag variable
+            # $NoOfVMs2= $NoOfVMs
             if (($cond) -and ($NoOfVMs -gt 0)) {
                 while ($NoOfVMs -gt 0) {
                     $tempName = Read-Host "Enter the name for VM(s)" # Getting the names of VMs to be created via user prompt
@@ -45,7 +46,7 @@ else {
                         Write-Host "VM files with same name already exists! Please enter a different name..."
                     }
                     else {
-                        $NameOfVMs += $tempName 
+                        $NameOfVMs += ,$tempName 
                         $NoOfVMs--
                     }
                 }
@@ -87,7 +88,13 @@ else {
     catch {
         Write-Warning "VM creation failed!"  $errormsg
     }
+    # foreach ($VM in $NameOfVMs) {
+    #     Enter-PSSession -VMName $VM
+    #     Invoke-Command -VMName $VM -ScriptBlock{Rename-Computer -NewName $VM}
+    # }
+    
 }
+
 
 # function VirtualSwitch ($VirSwitch = (Get-VMSwitch -SwitchType External -ErrorAction SilentlyContinue)) {
 #     if ($VirSwitch) {
